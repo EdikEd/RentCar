@@ -1,0 +1,25 @@
+<div class="container  rounded" style="margin-top:6%;" >
+    <div class="row justify-content-center">
+        <div class="col-md-4 p-3 text-bg-dark rounded">
+            <div>
+                <img src="../../assets/images/form_header.jpg" class=" rounded" id="form_header_img" alt="">
+            </div>
+            <form action="">
+                <label for="firstName">First name:</label>
+                <input type="text" placeholder="Enter first name" [(ngModel)] = "firstName" class="form-control" name="firstName">
+                <label for="phone">Phone number:</label>
+                <input type="tel" placeholder="Enter phone number" [(ngModel)] = "phone" class="form-control" name="phone">
+                <div *ngIf="showMessage">
+                    <p  class="alert alert-danger p-1 mt-3">{{message}}</p>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-success" (click)="onSubmit()">Login
+                         <span>
+                            <img src="../../assets/images/car_key.png" style="width: 30x; height:30px" alt="">
+                         </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

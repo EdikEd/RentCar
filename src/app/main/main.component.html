@@ -1,0 +1,37 @@
+<!-- Intro section -->
+<div class="p-4 p-md-5 mb-5 mt-3 rounded text-bg-dark container">
+  <div class="row">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Car Rental Service</h1>
+        <p class="lead my-3">A car rental or car hire agency is a company that rents automobiles for short periods of time for a fee. It is often organized with numerous local branches, and primarily located near airports or busy city areas and often complemented by a website allowing online reservations.</p>
+        <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+      </div>
+      <div class="col-md-6 px-0">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://www.alainclass.com/wp-content/uploads/2017/12/1170-LAMBORGHINI-MURCIELAGO-3527-9-copy.jpg" class="d-block w-100 rounded" style="height:400px" alt="...">
+            </div>
+            <div *ngFor="let carImageUrl of carImageUrls" class="carousel-item">
+              <img [src]=[carImageUrl] class="d-block w-100 rounded" style="height:400px" alt="Car image">
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>  
+</div>
+
+<!-- Available car brands -->
+<div class="container p-3 text-bg-dark rounded" style="margin-bottom: 100px;">
+  <div class="row ">
+    <div class="col text-center">
+      <h3 class="display-6 fst-italic">Available car brands</h3>
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <div *ngFor="let carImageBrand of carImageBrands" class="col-md-2 text-center">
+      <img [src]=[carImageBrand]  alt="">
+    </div>
+  </div>
+</div>

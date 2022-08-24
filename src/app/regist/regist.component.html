@@ -1,0 +1,23 @@
+<div class="container rounded " style="margin-top: 4%;">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-4 text-bg-dark p-3 rounded">
+            <form action="">
+                <label for="firstName">First name:</label>
+                <input type="text" placeholder="Enter first name" [(ngModel)]="user.firstName" name="first" class="form-control">
+                <label for="lastName">Last name:</label>
+                <input type="text" placeholder="Enter last name" [(ngModel)]="user.lastName" name="last" class="form-control">
+                <label for="address">Address:</label>
+                <input type="text" name="address" placeholder="Enter address" [(ngModel)]="user.address" name="address" class="form-control">
+                <label for="phone">Phone number:</label>
+                <input type="tel" name="phone" placeholder="Enter phone number" [(ngModel)]="user.phone" name="phone" class="form-control">
+                <div class="text-center mt-3">
+                    <button class="btn btn-primary" (click)="onRegist()">Register
+                         <span>
+                            <img src="../../assets/images/car_key.png" style="width: 30x; height:30px" alt="">
+                         </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
