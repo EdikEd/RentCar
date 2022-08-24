@@ -10,4 +10,8 @@ export class MessageService {
   messageUnsuccessAuth() {
     return "There no user with this name in database!";
   }
+
+  showMessageSuccess(message:string) {
+    return message;
+  }
 }

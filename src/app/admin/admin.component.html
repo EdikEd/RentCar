@@ -12,7 +12,7 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <b>USERS:</b>
-                                <button class="btn btn-success" (click)="addUser()">+</button>
+                                <button class="btn btn-success" (click)="addUserShow()">+</button>
                                 <button class="btn btn-primary" (click)="getUsers()">Show Users</button>
                             </li>
                             <li class="list-group-item">
@@ -21,10 +21,23 @@
                                 <button class="btn btn-primary" (click)="getCars()">Show Cars</button>
                             </li>
                         </ul>
-                        <div class="rounded mt-2">
-                            <form action="">
-                                
-                            </form>
+                        <!-- Add user data -->
+                        <div [ngSwitch]="switchKey" class="add_user">
+                            <div *ngSwitchCase="3" class="rounded mt-2 rounded mt-2 text-bg-dark p-3">
+                                <form >
+                                    <label for="firstName">First name:</label>
+                                    <input type="text" placeholder="Enter first name" [(ngModel)]="user.firstName" name="first" class="form-control">
+                                    <label for="lastName">Last name:</label>
+                                    <input type="text" placeholder="Enter last name" [(ngModel)]="user.lastName" name="last" class="form-control">
+                                    <label for="address">Address:</label>
+                                    <input type="text" name="address" placeholder="Enter address" [(ngModel)]="user.address" name="address" class="form-control">
+                                    <label for="phone">Phone number:</label>
+                                    <input type="tel" name="phone" placeholder="Enter phone number" [(ngModel)]="user.phone" name="phone" class="form-control">
+                                    <div class="text-center mt-3">
+                                        <button class="btn btn-primary" (click)="addUser()">Add user</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -50,9 +63,12 @@
                                     <tr *ngSwitchCase="2">
                                         <td>id</td>
                                         <td>Model</td>
+                                        <td>imageUrl</td>
+                                        <td>labelUrl</td>
                                         <td>Price</td>
                                         <td>Rental price</td>
                                         <td>Type</td>                                    
+                                        <td>Year</td>                                    
                                         <td>Action</td>                                    
                                         <td>Action</td>                                    
                                     </tr>
@@ -69,16 +85,24 @@
                                         <!-- Cars data -->
                                         <td *ngSwitchCase="2">{{item.id}}</td>
                                         <td *ngSwitchCase="2">{{item.model}}</td>
+                                        <td *ngSwitchCase="2"><img [src]=[item.imageUrl] alt="" style="width:100px;height:100px;"></td>
+                                        <td *ngSwitchCase="2"><img [src]=[item.labelUrl] alt=""></td>
                                         <td *ngSwitchCase="2">{{item.price}}</td>
                                         <td *ngSwitchCase="2">{{item.rentalPrice}}</td>
                                         <td *ngSwitchCase="2">{{item.type}}</td>
+                                        <td *ngSwitchCase="2">{{item.yearOfManufacture}}</td>                                    
 
-                                        <td><button class="btn btn-warning">Update</button></td>
-                                        <td><button class="btn btn-danger" (click)="deleteUser(item.id)">Delete</button></td>
+                                        <td *ngSwitchCase="1"><button class="btn btn-warning">Update</button></td>
+                                        <td *ngSwitchCase="2"><button class="btn btn-warning">Update</button></td>
+                                        <td *ngSwitchCase="1"><button  class="btn btn-danger" (click)="deleteUser(item.id)">Delete</button></td>
+                                        <td *ngSwitchCase="2"><button  class="btn btn-danger" (click)="deleteCar(item.id)">Delete</button></td>
                                     </tr>
                                 </tbody>
                                 <div *ngSwitchCase="0">
                                     <h3 class="alert alert-primary">Please choose action!</h3>
+                                </div>
+                                <div *ngSwitchCase="3">
+                                    <h6 *ngIf="showMessage" class="alert alert-success">{{message}}</h6>
                                 </div>
                             </table>
                         </div>
