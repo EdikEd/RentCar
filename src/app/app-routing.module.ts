@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RegistComponent } from './regist/regist.component';
+import { TitlePageComponent } from './title-page/title-page.component';
 import { AboutComponent } from './useractions/about/about/about.component';
 import { GalleryComponent } from './useractions/gallery/gallery/gallery.component';
 import { RentCarComponent } from './useractions/rentcar/rent-car/rent-car.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"gallery",component:GalleryComponent},
   {path:"rules",component:RulesComponent},
   {path:"about",component:AboutComponent},
+  {path:"title-page",component:TitlePageComponent},
   {path:"**",component:MainComponent}
 ];
 

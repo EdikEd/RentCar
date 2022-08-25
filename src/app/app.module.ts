@@ -16,6 +16,7 @@ import { GalleryComponent } from './useractions/gallery/gallery/gallery.componen
 import { RulesComponent } from './useractions/rules/rules/rules.component';
 import { AboutComponent } from './useractions/about/about/about.component';
 import { RentCarComponent } from './useractions/rentcar/rent-car/rent-car.component';
+import { TitlePageComponent } from './title-page/title-page.component';
 
 
 
@@ -33,6 +34,7 @@ import { RentCarComponent } from './useractions/rentcar/rent-car/rent-car.compon
     RulesComponent,
     AboutComponent,
     RentCarComponent,
+    TitlePageComponent,
   ],
   imports: [
     BrowserModule,
