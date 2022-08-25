@@ -1,1 +1,63 @@
-<p>rent-car works!</p>
+<div class="container">
+    <div clsas="row">
+        <div class="rent_car_header col-md-12">
+            <h3 class="text-primary text-center mt-4">{{title | uppercase}}</h3>
+        </div>
+    </div>
+    
+    <div class="rent_car_body mt-4">
+        <div class="row">
+            <!-- Choose and search car -->
+            <div class="col-md-5">
+                <div class="search_form d-flex justify-content-start">
+                    <input type="text" class="form-control search_field " placeholder="Search car ... ">
+                    <button class="btn btn-primary btn_search">Search</button>
+                </div>
+                <div *ngFor="let car of cars" class="cars_list mt-3">
+                    <ul>
+                        <li><button class="btn btn-outline-primary" (click)="showCurrentCar(car)">{{car.model}}</button></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Car info (details) -->
+            <div class="col-md-7" *ngIf="showCarInfo">
+                <div class="car_info">
+                    <div class="car_info_header text-bg-dark text-center rounded p-3">
+                        <h4>CAR INFO</h4>
+                    </div>
+                    <div class="car_info_body d-flex  mt-3">
+                        <!-- Car info img -->
+                        <div class="car_info_body_img ">
+                            <img [src]=[currentCar.imageUrl] class="img-thumbnail" alt="car img">
+                        </div>
+                        <!-- Car info description -->
+                        <div class="car_info_body_desc mt-3">
+                            <div class="d-flex align-items-center">
+                                <img [src]=[currentCar.labelUrl] class="rounded" alt="">
+                                <h5 class="car_info_title"> {{currentCar.model}}</h5>
+                            </div>
+                            <table class="table table-striped table-hover table-bordered  mt-3 text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Price</th>
+                                        <th>Rent price per day</th>
+                                        <th>Type</th>
+                                        <th>Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{currentCar.price | currency}}</td>
+                                        <td>{{currentCar.rentalPrice | currency}}</td>
+                                        <td>{{currentCar.type}}</td>
+                                        <td>{{currentCar.yearOfManufacture}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

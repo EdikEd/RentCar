@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Car } from 'src/app/interface/car';
+import { CarService } from 'src/app/service/car.service';
 
 @Component({
   selector: 'app-rent-car',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RentCarComponent implements OnInit {
 
-  constructor() { }
+  title:string = "rent car";
+  cars:Car[] = [];
+  currentCar:any;
+  showCarInfo:boolean = false;
+
+  constructor(private carService:CarService) { }
 
   ngOnInit(): void {
+    this.getCars();
+  }
+
+  showCurrentCar(car:Car) {
+    this.currentCar = car;
+    this.showCarInfo = true;
+  }
+
+  getCars() {
+    this.carService.getCars().subscribe(
+      cars => {
+        this.cars = cars;
+      }
+    );
   }
 
 }
