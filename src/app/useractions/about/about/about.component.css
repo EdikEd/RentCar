@@ -1,0 +1,15 @@
+.about_img {
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+
+.about_body {
+    border: 3px solid silver;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.about_author_info_img {
+    width: 100%px;
+    height:150px;
+}

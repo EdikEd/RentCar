@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../interface/user';
 import { AuthService } from '../service/auth.service';
 import { MessageService } from '../service/message.service';
 import { RouteService } from '../service/route.service';
@@ -14,6 +15,8 @@ export class LoginComponent implements OnInit {
   firstName:string = "";
   phone:string = "";
   message:string = "";
+
+  
 
   constructor(private authService:AuthService, private routeService:RouteService,private messageService:MessageService) { }
 

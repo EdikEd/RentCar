@@ -9,7 +9,13 @@ import { UserService } from './user.service';
 export class AuthService {
   isAdmin:boolean = false;
   private static isAuth:boolean = false;
-  
+  static user:User  = {
+    firstName:"",
+    lastName:"",
+    address:"",
+    phone:"",
+  }
+
 
   constructor(private routeService:RouteService,private userService:UserService) { }
 
@@ -27,6 +33,7 @@ export class AuthService {
       user => {
         if (user != null && user.firstName == firstName) {
           this.setIsAuth(true);
+          AuthService.user = user;
           if (user.phone == "0950912869" && user.firstName == "admin") {
             this.isAdmin = true;
             this.routeService.redirect('/admin');
@@ -34,7 +41,6 @@ export class AuthService {
             this.routeService.redirect('/home');
           }
         } 
-        
       }
     )
      
