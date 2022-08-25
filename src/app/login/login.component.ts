@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.checkUser(this.firstName);
-    if(!this.authService.isAuth) {
+    if(!this.authService.getIsAuth()) {
       this.message = this.messageService.messageUnsuccessAuth();
       this.firstName = "";
       this.phone = "";

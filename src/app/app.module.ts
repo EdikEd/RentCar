@@ -12,6 +12,10 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegistComponent } from './regist/regist.component';
 import { AdminComponent } from './admin/admin.component';
+import { GalleryComponent } from './useractions/gallery/gallery/gallery.component';
+import { RulesComponent } from './useractions/rules/rules/rules.component';
+import { AboutComponent } from './useractions/about/about/about.component';
+import { RentCarComponent } from './useractions/rentcar/rent-car/rent-car.component';
 
 
 @NgModule({
@@ -24,6 +28,10 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     RegistComponent,
     AdminComponent,
+    GalleryComponent,
+    RulesComponent,
+    AboutComponent,
+    RentCarComponent
   ],
   imports: [
     BrowserModule,

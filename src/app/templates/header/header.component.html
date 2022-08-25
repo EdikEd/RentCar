@@ -12,9 +12,33 @@
         <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
       </form> -->
 
+      <ul *ngIf="getIsAuth()" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 fs-5">
+
+
+        <li><a  *ngIf="getCurrentRoute() != '/home'"  routerLink="/home" class="nav-link px-2 text-white header_link">Home</a></li>
+        <li><a *ngIf="getCurrentRoute() == '/home'"  routerLink="/home" class="nav-link px-2 text-danger fs-4">Home</a></li>
+
+        <li><a  *ngIf="getCurrentRoute() != '/rent-car'"  routerLink="/rent-car" class="nav-link px-2 text-white header_link">Rent Car</a></li>
+        <li><a *ngIf="getCurrentRoute() == '/rent-car'"  routerLink="/rent-car" class="nav-link px-2 text-danger fs-4">Rent Car</a></li>
+
+        <li><a  *ngIf="getCurrentRoute() != '/gallery'"  routerLink="/gallery" class="nav-link px-2 text-white header_link">Gallery</a></li>
+        <li><a *ngIf="getCurrentRoute() == '/gallery'" routerLink="/gallery" class="nav-link px-2 text-danger fs-4">Gallery</a></li>
+
+        <li><a  *ngIf="getCurrentRoute() != '/rules'" routerLink="/rules"  href="#" class="nav-link px-2 text-white header_link">Rules</a></li>
+        <li><a *ngIf="getCurrentRoute() == '/rules'" routerLink="/rules" class="nav-link px-2 text-danger fs-4">Rules</a></li>
+
+        <li><a  *ngIf="getCurrentRoute() != '/about'" routerLink="/about"  href="#" class="nav-link px-2 text-white header_link">About</a></li>
+        <li><a *ngIf="getCurrentRoute() == '/about'" routerLink="/about" class="nav-link px-2 text-danger fs-4">About</a></li>
+
+        
+      </ul>
+
       <div class="text-end">
-        <a  routerLink="/login" class="btn btn-outline-light me-2">Login</a>
-        <a  routerLink="/regist"  class="btn btn-warning">Sign-up</a>
+        <a  *ngIf="!getIsAuth()" routerLink="/login" class="btn btn-outline-light me-2">Login</a>
+        <a  *ngIf="getIsAuth()" routerLink="/login" class="btn btn-outline-danger me-2" (click)="logout()">Logout 
+          <img src="../../../assets/images/logout_img.jpg" style="width:20px;height:20px;" alt="">
+        </a>
+        <a  *ngIf="!getIsAuth()" routerLink="/regist"  class="btn btn-warning">Sign-up</a>        
       </div>
     </div>
   </div>
