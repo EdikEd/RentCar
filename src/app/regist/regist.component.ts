@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../interface/user';
 import { UserService } from '../service/user.service';
 
@@ -9,7 +10,10 @@ import { UserService } from '../service/user.service';
 })
 export class RegistComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(
+    private userService:UserService,
+    private router:Router
+  ) { }
 
   user:User  = {
     firstName:"",
@@ -23,6 +27,7 @@ export class RegistComponent implements OnInit {
 
   onRegist() {
     this.userService.addUser(this.user).subscribe();
+    this.router.navigateByUrl('/login');
   }
 
 }

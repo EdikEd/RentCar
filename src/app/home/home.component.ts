@@ -28,8 +28,15 @@ export class HomeComponent implements OnInit {
 
   getRents() {
     this.rentService.getRentAll().subscribe(
-      rents => this.rents = rents
+      rents => {
+         this.rents = rents.filter((rent) => {
+            return rent.user.firstName == AuthService.user.firstName
+         })
+      }
     );
+    
   }
+
+
 
 }

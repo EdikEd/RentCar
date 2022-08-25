@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Car } from 'src/app/interface/car';
 import { AuthService } from 'src/app/service/auth.service';
 import { CarService } from 'src/app/service/car.service';
@@ -18,6 +19,8 @@ export class RentCarComponent implements OnInit {
   showCarInfo:boolean = false;
   rentDate:any;
   date:string = "";
+  searchCars:Car[] = [];
+  carModel:string = "";
   
 
   // Date
@@ -27,11 +30,25 @@ export class RentCarComponent implements OnInit {
     private carService:CarService,
     private userService:UserService,
     private rentService:RentService,
-    private authService:AuthService
+    private authService:AuthService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
     this.getCars();
+  }
+
+  showAllCars() {
+    this.getCars();
+  }
+
+  searchCar() {
+    this.cars = this.searchCars.filter(
+      (car) => {
+        return car.model.includes(this.carModel)
+      }
+    );
+    
   }
 
   showCurrentCar(car:Car) {
@@ -39,7 +56,7 @@ export class RentCarComponent implements OnInit {
     this.showCarInfo = true;
   }
 
-  showRentDate() {
+  RentCar() {
     this.rentDate = new Date(this.date);    
     this.rentService.setRent({
       user:AuthService.user,
@@ -47,12 +64,14 @@ export class RentCarComponent implements OnInit {
       rentStartDate:this.currentDate,
       rentEndDate:this.rentDate
     }).subscribe();
+    this.router.navigateByUrl("/home");
   }
 
   getCars() {
     this.carService.getCars().subscribe(
       cars => {
         this.cars = cars;
+        this.searchCars = cars;
       }
     );
   }

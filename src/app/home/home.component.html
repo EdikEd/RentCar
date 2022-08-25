@@ -32,11 +32,18 @@
                 <div class="profile_footer">
                     <h5 class="text-center">CARS RENTED</h5>
                     <div class="cars_rented">
-                        <ul *ngFor="let rent of rents">
-                            <li><b>Car model:</b> {{rent.car.model}}</li>
-                            <li><b>Start date:</b> {{rent.rentStartDate}}</li>
-                            <li><b>End date:</b> {{rent.rentEndDate}}</li>
-                        </ul>
+                        <div *ngFor="let rent of rents" class="cars_rented_body d-flex justify-content-between align-items-center">
+                            <ul>
+                                <hr>
+                                    <li><b class="text-danger">Car model:</b><span class="rent_car_list_item">{{rent.car.model}}</span></li>
+                                    <li><b>Start date:</b> <span class="rent_car_list_item">{{rent.rentStartDate | date:'short'}}</span></li>
+                                    <li><b>End date:</b><span class="rent_car_list_item"> {{rent.rentEndDate | date:'short' }}</span></li>                           
+                                <hr>
+                            </ul>
+                            <div class="car_rented_img">
+                                <img [src]="rent.car.imageUrl" style="width:100px; height:100px" class="rounded-circle img-thumbnail" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
