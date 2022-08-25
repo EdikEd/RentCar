@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/interface/car';
+import { AuthService } from 'src/app/service/auth.service';
 import { CarService } from 'src/app/service/car.service';
+import { RentService } from 'src/app/service/rent.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-rent-car',
@@ -13,8 +16,19 @@ export class RentCarComponent implements OnInit {
   cars:Car[] = [];
   currentCar:any;
   showCarInfo:boolean = false;
+  rentDate:any;
+  date:string = "";
+  
 
-  constructor(private carService:CarService) { }
+  // Date
+  currentDate:Date = new Date();
+
+  constructor(
+    private carService:CarService,
+    private userService:UserService,
+    private rentService:RentService,
+    private authService:AuthService
+  ) { }
 
   ngOnInit(): void {
     this.getCars();
@@ -23,6 +37,16 @@ export class RentCarComponent implements OnInit {
   showCurrentCar(car:Car) {
     this.currentCar = car;
     this.showCarInfo = true;
+  }
+
+  showRentDate() {
+    this.rentDate = new Date(this.date);    
+    this.rentService.setRent({
+      user:AuthService.user,
+      car:this.currentCar,
+      rentStartDate:this.currentDate,
+      rentEndDate:this.rentDate
+    }).subscribe();
   }
 
   getCars() {

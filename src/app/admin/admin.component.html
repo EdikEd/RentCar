@@ -20,6 +20,11 @@
                                 <button class="btn btn-success" (click)="addCar()">+</button>
                                 <button class="btn btn-primary" (click)="getCars()">Show Cars</button>
                             </li>
+                            <li class="list-group-item">
+                                <b>RENTS:</b> 
+                                <button class="btn btn-success">+</button>
+                                <button class="btn btn-primary" (click)="getRents()">Show Rents </button>
+                            </li>
                         </ul>
                         <!-- Add user data -->
                         <div [ngSwitch]="switchKey" class="add_user">
@@ -72,6 +77,18 @@
                                         <td>Action</td>                                    
                                         <td>Action</td>                                    
                                     </tr>
+
+                                    <!-- Rent headings -->
+                                    <tr *ngSwitchCase="4">
+                                        <td>id</td>
+                                        <td>User name</td>
+                                        <td>Car model</td>
+                                        <td>Rent price</td>
+                                        <td>Start rent date</td>
+                                        <td>End rent date</td>  
+                                        <td>Action</td>                                    
+                                        <td>Action</td>                                                                         
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let item of collection">
@@ -92,10 +109,21 @@
                                         <td *ngSwitchCase="2">{{item.type}}</td>
                                         <td *ngSwitchCase="2">{{item.yearOfManufacture}}</td>                                    
 
+                                        <!-- Rent table -->
+                                        <td *ngSwitchCase="4">{{item.id}}</td>
+                                        <td *ngSwitchCase="4">{{item.user.firstName}}</td>
+                                        <td *ngSwitchCase="4">{{item.car.model}}</td>
+                                        <td *ngSwitchCase="4">{{item.car.rentalPrice}}</td>
+                                        <td *ngSwitchCase="4">{{item.rentStartDate | date:'short'}}</td>
+                                        <td *ngSwitchCase="4">{{item.rentEndDate | date:'short'}}</td>
+
+                                        <!-- Default buttons -->
                                         <td *ngSwitchCase="1"><button class="btn btn-warning">Update</button></td>
                                         <td *ngSwitchCase="2"><button class="btn btn-warning">Update</button></td>
+                                        <td *ngSwitchCase="4"><button class="btn btn-warning">Update</button></td>
                                         <td *ngSwitchCase="1"><button  class="btn btn-danger" (click)="deleteUser(item.id)">Delete</button></td>
                                         <td *ngSwitchCase="2"><button  class="btn btn-danger" (click)="deleteCar(item.id)">Delete</button></td>
+                                        <td *ngSwitchCase="4"><button  class="btn btn-danger" (click)="deleteRent(item.id)">Delete</button></td>
                                     </tr>
                                 </tbody>
                                 <div *ngSwitchCase="0">

@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Rent } from '../interface/rent';
 import { User } from '../interface/user';
 import { AuthService } from '../service/auth.service';
+import { RentService } from '../service/rent.service';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +11,25 @@ import { AuthService } from '../service/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  rents:Rent[] = [];
+
+  constructor(
+    private authService:AuthService,
+    private rentService:RentService
+  ) { }
 
   ngOnInit(): void {
-    
+    this.getRents();
   }
 
   getUserData() {
     return AuthService.user;
   }
 
+  getRents() {
+    this.rentService.getRentAll().subscribe(
+      rents => this.rents = rents
+    );
+  }
 
 }

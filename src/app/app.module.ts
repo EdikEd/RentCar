@@ -18,6 +18,7 @@ import { AboutComponent } from './useractions/about/about/about.component';
 import { RentCarComponent } from './useractions/rentcar/rent-car/rent-car.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { RentCarComponent } from './useractions/rentcar/rent-car/rent-car.compon
     GalleryComponent,
     RulesComponent,
     AboutComponent,
-    RentCarComponent
+    RentCarComponent,
   ],
   imports: [
     BrowserModule,

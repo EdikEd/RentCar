@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Rent } from '../interface/rent';
 import { User } from '../interface/user';
 import { CarService } from '../service/car.service';
 import { MessageService } from '../service/message.service';
+import { RentService } from '../service/rent.service';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -23,10 +25,34 @@ export class AdminComponent implements OnInit {
   }
 
 
-  constructor(private userService:UserService,private carService:CarService, private messageService:MessageService) { }
+
+  constructor(
+    private userService:UserService,
+    private carService:CarService,
+    private messageService:MessageService,
+    private rentService:RentService
+  ) { }
 
   ngOnInit(): void {
 
+  }
+
+// Rent Part
+  getRents() {
+    this.collection = [];
+    this.switchKey = 4;
+    this.rentService.getRentAll().subscribe(
+      rents => {
+        this.collection = rents;
+        console.log(this.collection);
+        
+      }
+    );
+  }
+
+  deleteRent(id:string) {
+    this.rentService.deleteRent(id).subscribe();
+    this.deleteElem(id);
   }
 
 // User part

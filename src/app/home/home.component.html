@@ -31,6 +31,13 @@
                 <hr>
                 <div class="profile_footer">
                     <h5 class="text-center">CARS RENTED</h5>
+                    <div class="cars_rented">
+                        <ul *ngFor="let rent of rents">
+                            <li><b>Car model:</b> {{rent.car.model}}</li>
+                            <li><b>Start date:</b> {{rent.rentStartDate}}</li>
+                            <li><b>End date:</b> {{rent.rentEndDate}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
